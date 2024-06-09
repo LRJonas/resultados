@@ -1,5 +1,6 @@
 package com.guardioes.resultados.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,6 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @Entity
 @Table(name= "propostas")
+@JsonDeserialize
 public class Resultado {
 
     @Id

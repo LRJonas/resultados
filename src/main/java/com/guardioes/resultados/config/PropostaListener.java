@@ -24,6 +24,13 @@ public class PropostaListener {
     @KafkaListener(topics = "Resultado", groupId = "resultados", containerFactory = "jsonContainerFactory")
     public void listen1(Resultado resultado) {
         log.info("Proposta {}", resultado, " recebida com sucesso");
-        repository.save(resultado);
+
+        try {
+            repository.save(resultado);
+            log.info("Proposta {} salva com sucesso no banco de dados", resultado.getId());
+        } catch (Exception e) {
+            log.error("Erro ao salvar proposta {} no banco de dados:", resultado.getId(), e);
+        }
     }
+
 }
