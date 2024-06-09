@@ -14,9 +14,11 @@ public class PropostaListener {
 
     @KafkaListener(topics = "Resultado", groupId = "resultados")
     public void listen(Resultado resultado) {
-        System.out.println("Nova proposta: " + resultado);
-
-        repository.save(resultado);
-
+        try {
+            System.out.println("Nova proposta: " + resultado);
+            repository.save(resultado);
+        } catch (Exception e) {
+            System.out.println("Erro ao salvar proposta: " + e.getMessage());
+        }
     }
 }

@@ -22,4 +22,5 @@ public class ResultadosController {
         List <Resultado> resultados = resultadoService.findAll();
         return ResponseEntity.ok(resultados);
     }
+    
 }
