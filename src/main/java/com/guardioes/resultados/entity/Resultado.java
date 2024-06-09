@@ -18,6 +18,10 @@ public class Resultado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "id_proposta")
-    private Long idProposta;
+    private String titulo;
+    private String descricao;
+    private int aprovar;
+    private int rejeitar;
+    private int tempo;
+    private boolean ativo;
 }
