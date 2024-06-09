@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
+
 @Getter
 @Setter @ToString
 @AllArgsConstructor
@@ -12,7 +14,7 @@ import lombok.*;
 @Entity
 @Table(name= "propostas")
 @JsonDeserialize
-public class Resultado {
+public class PropostaResponseDto implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

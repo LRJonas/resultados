@@ -1,6 +1,6 @@
 package com.guardioes.resultados.web.controller;
 
-import com.guardioes.resultados.entity.Resultado;
+import com.guardioes.resultados.entity.PropostaResponseDto;
 import com.guardioes.resultados.service.ResultadoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +18,8 @@ public class ResultadosController {
     private final ResultadoService resultadoService;
 
     @GetMapping("/buscar-todos")
-    public ResponseEntity<List<Resultado>> buscarTodos(){
-        List <Resultado> resultados = resultadoService.findAll();
+    public ResponseEntity<List<PropostaResponseDto>> buscarTodos(){
+        List <PropostaResponseDto> resultados = resultadoService.findAll();
         return ResponseEntity.ok(resultados);
     }
     

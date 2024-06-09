@@ -1,7 +1,7 @@
 package com.guardioes.resultados.repository;
 
-import com.guardioes.resultados.entity.Resultado;
+import com.guardioes.resultados.entity.PropostaResponseDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ResultadoRepository extends JpaRepository<Resultado, Long> {
+public interface ResultadoRepository extends JpaRepository<PropostaResponseDto, Long> {
 }

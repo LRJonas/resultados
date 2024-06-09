@@ -1,6 +1,6 @@
 package com.guardioes.resultados.config;
 
-import com.guardioes.resultados.entity.Resultado;
+import com.guardioes.resultados.entity.PropostaResponseDto;
 import com.guardioes.resultados.repository.ResultadoRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -14,8 +14,8 @@ public class PropostaListener {
 
     private final ResultadoRepository repository;
 
-    @KafkaListener(topics = "Resultado", groupId = "resultados", containerFactory = "jsonContainerFactory")
-    public void listen(Resultado resultado) {
+    @KafkaListener(topics = "Resultado", groupId = "resultados")
+    public void listen(PropostaResponseDto resultado) {
         log.info("Proposta {} recebida com sucesso", resultado);
 
         try {
