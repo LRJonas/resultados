@@ -1,4 +1,4 @@
-package com.guardioes.resultados.configuracao;
+package com.guardioes.resultados.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonFormat;

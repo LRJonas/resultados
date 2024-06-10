@@ -1,6 +1,6 @@
-package com.guardioes.resultados.configuracao;
+package com.guardioes.resultados.config;
 
-import com.guardioes.resultados.entidade.ResponseDtoPropostas;
+import com.guardioes.resultados.entity.ResponseDtoPropostas;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -17,7 +17,7 @@ import java.util.HashMap;
 
 @RequiredArgsConstructor
 @Configuration
-public class ConfiguracaoFactoryConsumidor {
+public class ConfigConsumerFactory {
 
     private final KafkaProperties properties;
 

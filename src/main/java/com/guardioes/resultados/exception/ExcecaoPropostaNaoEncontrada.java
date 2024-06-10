@@ -1,4 +1,4 @@
-package com.guardioes.resultados.excecao;
+package com.guardioes.resultados.exception;
 
 public class ExcecaoPropostaNaoEncontrada extends RuntimeException {
     public ExcecaoPropostaNaoEncontrada(String message) {

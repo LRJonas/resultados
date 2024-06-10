@@ -1,8 +1,8 @@
-package com.guardioes.resultados.servico;
+package com.guardioes.resultados.service;
 
-import com.guardioes.resultados.entidade.ResponseDtoPropostas;
-import com.guardioes.resultados.excecao.ExcecaoPropostaNaoEncontrada;
-import com.guardioes.resultados.repositorio.RepositorioResultado;
+import com.guardioes.resultados.entity.ResponseDtoPropostas;
+import com.guardioes.resultados.exception.ExcecaoPropostaNaoEncontrada;
+import com.guardioes.resultados.repository.RepositoryResultado;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -13,9 +13,9 @@ import java.util.List;
 @Service
 @Log4j2
 @RequiredArgsConstructor
-public class ServicoResultado {
+public class ServiceResultado {
 
-    private final RepositorioResultado repository;
+    private final RepositoryResultado repository;
 
     @Transactional(readOnly = true)
     public List<ResponseDtoPropostas> buscarTodos() {

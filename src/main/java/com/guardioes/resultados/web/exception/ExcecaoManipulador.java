@@ -1,6 +1,6 @@
-package com.guardioes.resultados.web.excecao;
+package com.guardioes.resultados.web.exception;
 
-import com.guardioes.resultados.excecao.ExcecaoPropostaNaoEncontrada;
+import com.guardioes.resultados.exception.ExcecaoPropostaNaoEncontrada;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

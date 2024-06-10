@@ -1,7 +1,7 @@
-package com.guardioes.resultados.configuracao;
+package com.guardioes.resultados.config;
 
-import com.guardioes.resultados.entidade.ResponseDtoPropostas;
-import com.guardioes.resultados.repositorio.RepositorioResultado;
+import com.guardioes.resultados.entity.ResponseDtoPropostas;
+import com.guardioes.resultados.repository.RepositoryResultado;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Log4j2
 public class ListenerProposta {
 
-    private final RepositorioResultado repository;
+    private final RepositoryResultado repository;
 
     @KafkaListener(topics = "Resultado", groupId = "resultados", containerFactory = "factoryContainerListenerKafka")
     public void consumir(ResponseDtoPropostas resultado) {

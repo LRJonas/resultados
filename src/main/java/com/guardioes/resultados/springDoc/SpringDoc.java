@@ -1,7 +1,7 @@
 package com.guardioes.resultados.springDoc;
 
-import com.guardioes.resultados.entidade.ResponseDtoPropostas;
-import com.guardioes.resultados.web.excecao.MensagemErro;
+import com.guardioes.resultados.entity.ResponseDtoPropostas;
+import com.guardioes.resultados.web.exception.MensagemErro;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
