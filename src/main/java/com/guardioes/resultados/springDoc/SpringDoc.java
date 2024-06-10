@@ -1,6 +1,7 @@
 package com.guardioes.resultados.springDoc;
 
-import com.guardioes.resultados.entity.PropostaResponseDto;
+import com.guardioes.resultados.entidade.ResponseDtoPropostas;
+import com.guardioes.resultados.web.excecao.MensagemErro;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -19,20 +20,21 @@ public interface SpringDoc {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Sucesso",
                     content = @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = PropostaResponseDto.class))),
+                            schema = @Schema(implementation = ResponseDtoPropostas.class))),
             @ApiResponse(responseCode = "404", description = "Recurso não encontrado",
                     content = @Content(mediaType = "application/json"))
     })
-    ResponseEntity<List<PropostaResponseDto>> buscarTodos();
+    ResponseEntity<List<ResponseDtoPropostas>> buscarTodos();
 
     @Operation(summary = "Buscar resultados pro proposta ",
             description = "Endpoint que recupera os dados de uma determinada proposta com base no título.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Sucesso",
                     content = @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = PropostaResponseDto.class))),
+                            schema = @Schema(implementation = ResponseDtoPropostas.class))),
             @ApiResponse(responseCode = "404", description = "Recurso não encontrado",
-                    content = @Content(mediaType = "application/json"))
+                    content = @Content(mediaType = "application/json",
+                        schema = @Schema(implementation = MensagemErro.class)))
     })
-    ResponseEntity<List<PropostaResponseDto>> buscarProposta();
+    ResponseEntity<List<ResponseDtoPropostas>> buscarProposta();
 }

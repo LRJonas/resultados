@@ -1,6 +1,7 @@
 package com.guardioes.resultados.servico;
 
 import com.guardioes.resultados.entidade.ResponseDtoPropostas;
+import com.guardioes.resultados.excecao.ExcecaoPropostaNaoEncontrada;
 import com.guardioes.resultados.repositorio.RepositorioResultado;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -16,11 +17,6 @@ public class ServicoResultado {
 
     private final RepositorioResultado repository;
 
-    /*@KafkaListener(groupId = "group-1", topics = "Resultado", containerFactory = "strContainerFactory")
-    public void listener(String message) {
-        log.info("Receive message {}", message);
-    }*/
-
     @Transactional(readOnly = true)
     public List<ResponseDtoPropostas> buscarTodos() {
         return repository.findAll();
@@ -28,6 +24,7 @@ public class ServicoResultado {
 
     @Transactional(readOnly = true)
     public List<ResponseDtoPropostas> buscar(String propostaTitulo) {
-        return repository.findByTitulo(propostaTitulo);
+        return repository.findByTitulo(propostaTitulo)
+                .orElseThrow(() -> new ExcecaoPropostaNaoEncontrada("Proposta não encontrada"));
     }
 }
