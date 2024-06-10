@@ -1,7 +1,7 @@
-package com.guardioes.resultados.service;
+package com.guardioes.resultados.servico;
 
-import com.guardioes.resultados.entity.PropostaResponseDto;
-import com.guardioes.resultados.repository.ResultadoRepository;
+import com.guardioes.resultados.entidade.ResponseDtoPropostas;
+import com.guardioes.resultados.repositorio.RepositorioResultado;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -12,21 +12,22 @@ import java.util.List;
 @Service
 @Log4j2
 @RequiredArgsConstructor
-public class ResultadoService {
+public class ServicoResultado {
 
-    private final ResultadoRepository repository;
+    private final RepositorioResultado repository;
 
     /*@KafkaListener(groupId = "group-1", topics = "Resultado", containerFactory = "strContainerFactory")
     public void listener(String message) {
         log.info("Receive message {}", message);
     }*/
 
-    @Transactional
-    public List<PropostaResponseDto> findAll() {
+    @Transactional(readOnly = true)
+    public List<ResponseDtoPropostas> buscarTodos() {
         return repository.findAll();
     }
 
-    public List<PropostaResponseDto> buscar(String propostaTitulo) {
+    @Transactional(readOnly = true)
+    public List<ResponseDtoPropostas> buscar(String propostaTitulo) {
         return repository.findByTitulo(propostaTitulo);
     }
 }
