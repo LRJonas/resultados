@@ -38,8 +38,10 @@ public class ConsumerFactoryConfig {
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ErrorHandlingDeserializer.class);
         props.put(ErrorHandlingDeserializer.VALUE_DESERIALIZER_CLASS, JsonDeserializer.class);
         props.put(JsonDeserializer.VALUE_DEFAULT_TYPE, "com.guardioes.propostas.web.dto.PropostaResponseDto");
-        props.put(ConsumerConfig.GROUP_ID_CONFIG, "my-consumer-group");
+        props.put(ConsumerConfig.GROUP_ID_CONFIG, "resultados");
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+        props.put(JsonDeserializer.TRUSTED_PACKAGES, "*");
+
         return props;
     }
 
