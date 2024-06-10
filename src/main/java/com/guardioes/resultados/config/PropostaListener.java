@@ -14,7 +14,7 @@ public class PropostaListener {
 
     private final ResultadoRepository repository;
 
-    @KafkaListener(topics = "Resultado", groupId = "resultados")
+    @KafkaListener(topics = "Resultado", groupId = "resultados", containerFactory = "kafkaListenerContainerFactory")
     public void listen(PropostaResponseDto resultado) {
         log.info("Proposta {} recebida com sucesso", resultado);
 
