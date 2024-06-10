@@ -1,4 +1,4 @@
-package com.guardioes.resultados.controller;
+package com.guardioes.resultados.web.controlador;
 
 import com.guardioes.resultados.entidade.ResponseDtoPropostas;
 import com.guardioes.resultados.servico.ServicoResultado;
