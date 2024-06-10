@@ -17,7 +17,7 @@ public class ResultadosController {
 
     private final ResultadoService resultadoService;
 
-    @GetMapping("/buscar-todos")
+    @GetMapping
     public ResponseEntity<List<PropostaResponseDto>> buscarTodos(){
         List <PropostaResponseDto> resultados = resultadoService.findAll();
         return ResponseEntity.ok(resultados);
