@@ -25,4 +25,8 @@ public class ResultadoService {
     public List<PropostaResponseDto> findAll() {
         return repository.findAll();
     }
+
+    public List<PropostaResponseDto> buscar(String propostaTitulo) {
+        return repository.findByTitulo(propostaTitulo);
+    }
 }
