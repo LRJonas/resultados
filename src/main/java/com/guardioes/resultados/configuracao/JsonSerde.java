@@ -1,3 +1,5 @@
+package com.guardioes.resultados.configuracao;
+
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.PropertyAccessor;

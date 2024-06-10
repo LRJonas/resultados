@@ -1,6 +1,6 @@
-package com.guardioes.resultados.config;
+package com.guardioes.resultados.configuracao;
 
-import com.guardioes.resultados.entity.PropostaResponseDto;
+import com.guardioes.resultados.entidade.ResponseDtoPropostas;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -17,28 +17,28 @@ import java.util.HashMap;
 
 @RequiredArgsConstructor
 @Configuration
-public class ConsumerFactoryConfig {
+public class ConfiguracaoFactoryConsumidor {
 
     private final KafkaProperties properties;
 
     @Bean
-    public ConsumerFactory<String, PropostaResponseDto> consumerFactory() {
+    public ConsumerFactory<String, ResponseDtoPropostas> factoryConsumidor() {
         var configs =  new HashMap<String, Object>();
         configs.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, properties.getBootstrapServers());
         configs.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         configs.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ErrorHandlingDeserializer.class);
         configs.put(ErrorHandlingDeserializer.VALUE_DESERIALIZER_CLASS, JsonDeserializer.class.getName());
-        configs.put(JsonDeserializer.VALUE_DEFAULT_TYPE, PropostaResponseDto.class.getName());
+        configs.put(JsonDeserializer.VALUE_DEFAULT_TYPE, ResponseDtoPropostas.class.getName());
         configs.put(JsonDeserializer.TRUSTED_PACKAGES, "*");
-        return new DefaultKafkaConsumerFactory<>(configs, new StringDeserializer(), new JsonDeserializer<>(PropostaResponseDto.class, false));
+        return new DefaultKafkaConsumerFactory<>(configs, new StringDeserializer(), new JsonDeserializer<>(ResponseDtoPropostas.class, false));
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, PropostaResponseDto> kafkaListenerContainerFactory(
-            ConsumerFactory<String, PropostaResponseDto> consumerFactory
+    public ConcurrentKafkaListenerContainerFactory<String, ResponseDtoPropostas> factoryContainerListenerKafka(
+            ConsumerFactory<String, ResponseDtoPropostas> factoryConsumidor
     ) {
-        var factory = new ConcurrentKafkaListenerContainerFactory<String, PropostaResponseDto>();
-        factory.setConsumerFactory(consumerFactory());
+        var factory = new ConcurrentKafkaListenerContainerFactory<String, ResponseDtoPropostas>();
+        factory.setConsumerFactory(factoryConsumidor);
         return factory;
     }
 }
