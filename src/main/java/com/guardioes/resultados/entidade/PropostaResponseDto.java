@@ -1,4 +1,4 @@
-package com.guardioes.resultados.entity;
+package com.guardioes.resultados.entidade;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;

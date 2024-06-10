@@ -1,3 +1,5 @@
+package com.guardioes.resultados.configuracao;
+
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
@@ -12,11 +14,11 @@ import org.apache.kafka.common.serialization.Serializer;
 import java.io.IOException;
 
 @JsonFormat(shape = JsonFormat.Shape.STRING)
-public class JsonSerde<T> implements Serde<T> {
+public class JsonSD<T> implements Serde<T> {
     private ObjectMapper objectMapper = new ObjectMapper();
     private Class<T> clazz;
 
-    public JsonSerde(Class<T> clazz) {
+    public JsonSD(Class<T> clazz) {
         this.clazz = clazz;
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         objectMapper.registerModule(new JavaTimeModule());

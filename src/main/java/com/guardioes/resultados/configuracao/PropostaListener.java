@@ -1,7 +1,7 @@
-package com.guardioes.resultados.config;
+package com.guardioes.resultados.configuracao;
 
-import com.guardioes.resultados.entity.PropostaResponseDto;
-import com.guardioes.resultados.repository.ResultadoRepository;
+import com.guardioes.resultados.entidade.PropostaResponseDto;
+import com.guardioes.resultados.repositorio.RepositorioResultado;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -12,10 +12,10 @@ import org.springframework.stereotype.Component;
 @Log4j2
 public class PropostaListener {
 
-    private final ResultadoRepository repository;
+    private final RepositorioResultado repository;
 
     @KafkaListener(topics = "Resultado", groupId = "resultados", containerFactory = "kafkaListenerContainerFactory")
-    public void listen(PropostaResponseDto resultado) {
+    public void consumir(PropostaResponseDto resultado) {
         log.info("Proposta {} recebida com sucesso", resultado);
 
         try {
