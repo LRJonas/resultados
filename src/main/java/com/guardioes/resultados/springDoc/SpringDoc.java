@@ -20,8 +20,19 @@ public interface SpringDoc {
             @ApiResponse(responseCode = "200", description = "Sucesso",
                     content = @Content(mediaType = "application/json",
                             schema = @Schema(implementation = PropostaResponseDto.class))),
-            @ApiResponse(responseCode = "500", description = "Erro interno do servidor",
-                    content = @Content)
+            @ApiResponse(responseCode = "404", description = "Recurso não encontrado",
+                    content = @Content(mediaType = "application/json"))
     })
     ResponseEntity<List<PropostaResponseDto>> buscarTodos();
+
+    @Operation(summary = "Buscar resultados pro proposta ",
+            description = "Endpoint que recupera os dados de uma determinada proposta com base no título.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Sucesso",
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = PropostaResponseDto.class))),
+            @ApiResponse(responseCode = "404", description = "Recurso não encontrado",
+                    content = @Content(mediaType = "application/json"))
+    })
+    ResponseEntity<List<PropostaResponseDto>> buscarProposta();
 }
